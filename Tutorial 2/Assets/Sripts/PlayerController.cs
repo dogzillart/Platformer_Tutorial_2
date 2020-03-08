@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float hozMovement = Input.GetAxis("Horizontal");  
-        float verMovement = Input.GetAxis("Vertical");
+        float hozMovement = Input.GetAxisRaw("Horizontal");  
+        float verMovement = Input.GetAxisRaw("Vertical");
 
-        rd2d.AddForce(new Vector2(hozMovement * speed, verMovement * speed));
+        rd2d.velocity = new Vector2(hozMovement * speed, verMovement * speed);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.W))
             {
-                rd2d.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
+                rd2d.velocity = new Vector2(0, 1);
             }
         }
     }
